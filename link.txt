@@ -1,0 +1,1 @@
+http://ideas-app-six.vercel.app/ideas
