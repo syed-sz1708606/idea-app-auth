@@ -5,18 +5,16 @@ import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import { Stack } from '@mui/system';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import IdeaCard from '../../components/IdeaCard';
+import IdeaCard from 'components/IdeaCard';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
-import { userStore } from '../store/userStore';
+import { userStore } from 'store/userStore';
 
 export default function Home() {
   const queryClient = useQueryClient();
 
   const user = userStore((state) => state.user)
   const token = userStore((state) => state.token)
-
-
 
   const [idea, setIdea] = useState({ title: "", description: "" })
   const [open, setOpen] = useState(false)
@@ -30,7 +28,6 @@ export default function Home() {
       },
       body: JSON.stringify(idea),
     })
-
   });
 
   const handleAdd = () => {
@@ -110,7 +107,6 @@ export default function Home() {
             ))) : <></>)
           }
         </Stack>
-
       </Stack>
 
     </>

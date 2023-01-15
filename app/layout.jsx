@@ -4,11 +4,11 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './globals.css'
 import React, { useEffect } from 'react'
 import { Magic } from 'magic-sdk';
-import { userStore } from './store/userStore';
+import { useRouter } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 const queryClient = new QueryClient()
 
-let magic = new Magic(process.env.NEXT_PUBLIC_PUBLISHABLE_KEY);
+
 
 export default function RootLayout({ children }) {
 
@@ -18,6 +18,7 @@ export default function RootLayout({ children }) {
   // const user = userStore(state => state.user)
 
   useEffect(() => {
+    let magic = new Magic(process.env.NEXT_PUBLIC_PUBLISHABLE_KEY);
     magic.user.isLoggedIn().then((isLoggedIn) => {
       if (isLoggedIn) {
         magic.user.getMetadata().then((userData) => setUser(userData.email));

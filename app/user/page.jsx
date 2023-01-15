@@ -3,9 +3,7 @@ import { Button, Container, FormControl, Grid, Input, InputLabel, Stack, TextFie
 import React, { useEffect, useState } from 'react'
 import { Magic } from 'magic-sdk';
 import { useRouter } from 'next/navigation';
-import { userStore } from '../store/userStore';
-
-let magic = new Magic(process.env.NEXT_PUBLIC_PUBLISHABLE_KEY);
+import { userStore } from 'store/userStore';
 
 const Login = () => {
     const router = useRouter()
@@ -15,7 +13,7 @@ const Login = () => {
     const setUser = userStore(state => state.setUser)
     const setToken = userStore(state => state.setToken)
     const user = userStore(state => state.user)
-
+    let magic
 
     useEffect(() => {
         //  user?.issuer && Router.push('/ideas');
@@ -27,6 +25,7 @@ const Login = () => {
     }
 
     const handleLogin = async () => {
+        magic = new Magic(process.env.NEXT_PUBLIC_PUBLISHABLE_KEY);
         if (email) {
             try {
                 let didToken = await magic.auth.loginWithEmailOTP({ email });

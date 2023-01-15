@@ -2,7 +2,7 @@
 // this jwt token should be stored in the localstorage in client side
 // use it to serve content (i.e client pass it when requesting ideas)
 import { Magic } from '@magic-sdk/admin';
-import { createToken } from '../../utils/jwt';
+import { createToken } from 'utils/jwt';
 
 const mAdmin = new Magic(process.env.SECRET_KEY);
 
