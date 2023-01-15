@@ -13,7 +13,7 @@ const Login = () => {
     const setUser = userStore(state => state.setUser)
     const setToken = userStore(state => state.setToken)
     const user = userStore(state => state.user)
-    let magic
+ 
 
     useEffect(() => {
         //  user?.issuer && Router.push('/ideas');
@@ -25,7 +25,7 @@ const Login = () => {
     }
 
     const handleLogin = async () => {
-        magic = new Magic(process.env.NEXT_PUBLIC_PUBLISHABLE_KEY);
+        const magic = new Magic(process.env.NEXT_PUBLIC_PUBLISHABLE_KEY);
         if (email) {
             try {
                 let didToken = await magic.auth.loginWithEmailOTP({ email });
@@ -53,6 +53,7 @@ const Login = () => {
     };
 
     const handleLogout = async () => {
+        const magic = new Magic(process.env.NEXT_PUBLIC_PUBLISHABLE_KEY);
         await magic.user.logout();
         setUser("")
         setToken("")
