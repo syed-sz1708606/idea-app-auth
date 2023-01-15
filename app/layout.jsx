@@ -5,6 +5,7 @@ import './globals.css'
 import React, { useEffect } from 'react'
 import { Magic } from 'magic-sdk';
 import { useRouter } from 'next/navigation';
+import { userStore } from 'store/userStore';
 const queryClient = new QueryClient()
 
 
